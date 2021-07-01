@@ -27,7 +27,6 @@ app.use(bodyParser.json());
 
 //On utilise les routes pour faire la passerelle vers le frontEnd avec le backend
 app.use('/api/auth', usersRoutes);
-//app.use('/api/auth', userRoutes);
 
 
 app.use((req, res) => {

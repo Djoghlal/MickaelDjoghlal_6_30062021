@@ -11,6 +11,6 @@ const userCtrl = require('../controllers/user.js');
 router.post('/signup', userCtrl.signup);
 
 //Création de la route POST login
-//router.post('/login', userCtrl.login);
+router.post('/login', userCtrl.login);
 
 module.exports = router;
