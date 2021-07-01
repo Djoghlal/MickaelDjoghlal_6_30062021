@@ -1,0 +1,25 @@
+{
+  "name": "mickaeldjoghlal_6_30062021",
+  "version": "1.0.0",
+  "description": "Pour faire fonctionner le projet, vous devez installer : - [NodeJS](https://nodejs.org/en/download/) en version 12.14 ou 14.0  - [Angular CLI](https://github.com/angular/angular-cli) en version 7.0.2. - [node-sass](https://www.npmjs.com/package/node-sass) : attention à prendre la version correspondante à NodeJS. Pour Node 14.0 par exemple, installer node-sass en version 4.14+.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Djoghlal/MickaelDjoghlal_6_30062021.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Djoghlal/MickaelDjoghlal_6_30062021/issues"
+  },
+  "homepage": "https://github.com/Djoghlal/MickaelDjoghlal_6_30062021#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.13.0"
+  }
+}
