@@ -26,7 +26,7 @@ exports.signup = (req, res, next) => {
 exports.login = (req, res, next) => {
     userModel.findOne({ email: req.body.email })
     .then(user => {
-      console.log(user);
+      //console.log(user);
         if (!user) {
           return res.status(401).json({ error: 'Utilisateur non trouvé !' });
         }

@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const usersRoutes = require('./routes/user.js');
+const sauceRoutes = require('./routes/sauce.js');
 const bodyParser = require('body-parser');
 const app = express();
 
@@ -27,6 +28,7 @@ app.use(bodyParser.json());
 
 //On utilise les routes pour faire la passerelle vers le frontEnd avec le backend
 app.use('/api/auth', usersRoutes);
+app.use('/api', sauceRoutes);
 
 app.use((req, res) => {
     res.json({ message: 'Votre requête a bien été reçue !' }); 
