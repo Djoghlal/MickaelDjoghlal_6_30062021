@@ -33,7 +33,7 @@ app.use(bodyParser.json());
 //On utilise les routes pour faire la passerelle vers le frontEnd avec le backend
 app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use('/api/auth', usersRoutes);
-app.use('/api', sauceRoutes);
+app.use('/api/sauces', sauceRoutes);
 
 //Message de confirmation de requête reçue.
 app.use((req, res) => {

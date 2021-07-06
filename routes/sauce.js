@@ -8,7 +8,7 @@ const multer = require('../middlewares/multer-config.js');
 //On intègre la liaison entre les routes et le controller
 router.post('/', auth, multer, sauceCtrl.createSauce);      //C (CREATE)
 //Route concernant le like                                  //C (CREATE)
-router.get('/sauces', auth, sauceCtrl.sauce);               //R (READ)
+router.get('/', auth, sauceCtrl.sauce);                     //R (READ)
 //Route concernant vue d'une seule sauce                    //R (READ)
 //Route pour modifier une sauce                             //U (UPDATE)
 //Route pour supprimer une sauce                            //D (DELETE)

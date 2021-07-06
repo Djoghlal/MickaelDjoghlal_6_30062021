@@ -11,7 +11,8 @@ exports.sauce = (req, res, next) => {
 //Logique métier pour la création de sauce.
 exports.createSauce = (req, res, next) => {
     const sauceObject = JSON.parse(req.body.sauce);
-    const sauce = new Sauce({
+    delete sauceObject._id;
+    const sauce = new sauceModel({
         ...sauceObject,
         imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
     });
@@ -20,3 +21,17 @@ exports.createSauce = (req, res, next) => {
     .then(() => res.status(201).json({ message: 'Sauce créée !' }))
     .catch(error => res.status(400).json({message: error.message }));
   };
+
+//Logique métier pour la voir une sauce.
+// exports.createSauce = (req, res, next) => {
+//     const sauceObject = JSON.parse(req.body.sauce);
+//     delete sauceObject._id;
+//     const sauce = new sauceModel({
+//         ...sauceObject,
+//         imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
+//     });
+
+//     sauce.save()
+//     .then(() => res.status(201).json({ message: 'Sauce créée !' }))
+//     .catch(error => res.status(400).json({message: error.message }));
+//   };
