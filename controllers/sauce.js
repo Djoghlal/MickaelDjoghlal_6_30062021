@@ -1,13 +1,11 @@
+//On importe les modules supplémentaires
 const sauceModel = require('../models/sauce.js'); //On récupère le schéma (chemin réel)
 
 //Logique métier pour récupérer les sauces.
 exports.sauce = (req, res, next) => {
     sauceModel.find()
-    .then(sauces => {
-        //console.log(sauces);
-        res.status(200).json(sauces)
-    })
-    .catch(error => res.status(500).json({ message: error.message }));
+    .then(sauces => res.status(200).json(sauces))
+    .catch(error => res.status(400).json({ message: error.message }));
 };
 
 //Logique métier pour la création de sauce.

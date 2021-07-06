@@ -1,10 +1,16 @@
-const express = require('express'); //On récupère Express
-const router = express.Router(); //On prépare la route sauce
+//On importe les modules supplémentaires
+const express = require('express');
+const router = express.Router();
+const sauceCtrl = require('../controllers/sauce.js');
+const auth = require('../middlewares/auth.js');
+const multer = require('../middlewares/multer-config.js');
 
-const auth = require('../middlewares/auth.js'); //On récupère le middleware du token.
-const sauceCtrl = require('../controllers/sauce.js'); //On récupère la logique métier concernée.
-
-router.post('/', auth, sauceCtrl.createSauce);      //C (CREATE)
-router.get('/sauces', sauceCtrl.sauce);             //R (READ)
+//On intègre la liaison entre les routes et le controller
+router.post('/', auth, multer, sauceCtrl.createSauce);      //C (CREATE)
+//Route concernant le like                                  //C (CREATE)
+router.get('/sauces', auth, sauceCtrl.sauce);               //R (READ)
+//Route concernant vue d'une seule sauce                    //R (READ)
+//Route pour modifier une sauce                             //U (UPDATE)
+//Route pour supprimer une sauce                            //D (DELETE)
 
 module.exports = router;
