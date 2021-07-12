@@ -27,7 +27,7 @@ app.use((req, res, next) => {
   next();
 });
 
-//Utilisation de bodyParser json (VOIR AVEC STEPHANE)
+//Utilisation de bodyParser json
 app.use(bodyParser.json());
 
 //On utilise les routes pour faire la passerelle vers le frontEnd avec le backend
