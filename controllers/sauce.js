@@ -79,8 +79,6 @@ const sauceId = req.params.id;              //Création constante de l'Id de la 
         break;
 
         case -1:
-            const usersDisliked = sauce.userDisliked;   //Création constante des utilisateurs qui dislike.
-
             sauceModel.findOne({ _id: sauceId })
             .then((sauce) => {
                 sauceModel.updateOne({ _id: sauceId }, {
@@ -99,25 +97,23 @@ const sauceId = req.params.id;              //Création constante de l'Id de la 
             sauceModel.findOne({ _id: sauceId })
             .then((sauce) => {
                 //Si l'utilisateur à déjà like, on le retire, Sinon on retire du Dislike
-                if (sauce.userLiked.includes(userId)) {
+                if (sauce.usersLiked.includes(userId)) {
                     sauce.updateOne({ _id: req.params.id }, {
                         $inc: { likes: -1 }, //On retire le like
-                        $pull: { usersLiked: req.body.userId }, //On retire l'utilisateur du tableau
-                        _id: sauceId
+                        $pull: { usersLiked: userId }, //On retire l'utilisateur du tableau
                     })
-                    .then(() => { res.status(201).json({ message: 'Nous venons de retirer votre Like' }); })
-                    .catch((error) => { res.status(400).json({ message: error.message }); });
+                    .then(() => res.status(200).json({ message: 'Nous venons de retirer votre Like' }))
+                    .catch((error) => res.status(400).json({ message: error.message }));
                 } else {
                     sauce.updateOne({ _id: req.params.id },
                     {
                         $inc: { dislikes: -1 }, //On retire un dislike
-                        $pull: { userDisliked: req.body.iserId }, //On retire l'utilisateur du tableau Dislike
-                        _id: sauceId
+                        $pull: { usersDisliked: req.body.iserId }, //On retire l'utilisateur du tableau Dislike
                     })
-                    .then(() => { res.status(201).json({ message: 'Votre Dislike a été retiré' }); })
-                    .catch((error) => { res.status(400).json({ message: error.message }) ; });
+                    .then(() => res.status(200).json({ message: 'Votre Dislike a été retiré' }))
+                    .catch((error) => res.status(400).json({ message: error.message }));
                 }
             })
-            .catch((error) => { res.status(500).json({ message: error.message }); });
+            .catch((error) => res.status(500).json({ message: error.message }));
     }
 };

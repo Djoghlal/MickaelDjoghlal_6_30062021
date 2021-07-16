@@ -4,17 +4,20 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const path = require('path');
 
+require('dotenv').config(); //On ne créer pas de const car on ne l'utilise pas ailleurs on ne l'appelle qu'ici.
+
 const usersRoutes = require('./routes/user.js');
 const sauceRoutes = require('./routes/sauce.js');
 
 const app = express();
 
 //Connexion à la BDD MongoDB
-mongoose.connect('mongodb+srv://MickaP6:878a74BPLzYSr5xM@djoghlalp6.9gp8s.mongodb.net/Projet6?retryWrites=true&w=majority',
-  { 
-    useNewUrlParser: true,
-    useUnifiedTopology: true 
-  })
+//Process sert à importer la ligne de connexion MONGO_LINK du fichier .env
+mongoose.connect(process.env.MONGO_LINK,
+{ 
+  useNewUrlParser: true,
+  useUnifiedTopology: true 
+})
 
   .then(() => console.log('Connexion à MongoDB réussie !'))
   .catch(() => console.log('Connexion à MongoDB échouée !'));
