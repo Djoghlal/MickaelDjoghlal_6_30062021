@@ -2,12 +2,9 @@
 const sauceModel = require('../models/sauce.js'); //On récupère le schéma (chemin réel)
 const fs = require('fs');
 
-//Logique métier pour récupérer les sauces.
-exports.sauces = (req, res, next) => {
-    sauceModel.find()
-    .then(sauces => res.status(200).json(sauces))
-    .catch(error => res.status(400).json({ message: error.message }));
-};
+
+
+// *****************  Logiques métier POST ***************** CREATE (C)
 
 //Logique métier pour la création de sauce.
 exports.createSauce = (req, res, next) => {
@@ -23,12 +20,27 @@ exports.createSauce = (req, res, next) => {
     .catch(error => res.status(400).json({message: error.message }));
   };
 
+
+
+// *****************  Logiques métier GET ***************** READ (R)
+
+//Logique métier pour récupérer les sauces.
+exports.sauces = (req, res, next) => {
+    sauceModel.find()
+    .then(sauces => res.status(200).json(sauces))
+    .catch(error => res.status(400).json({ message: error.message }));
+};
+
 //Logique métier pour la voir une sauce.
 exports.getOneSauce = (req, res, next) => {
     sauceModel.findOne({ _id: req.params.id })
     .then(sauce => res.status(200).json(sauce))
     .catch(error => res.status(400).json({ message: error.message }))
 };
+
+
+
+// *****************  Logiques métier MODIFY ***************** UPDATE (U)
 
 //Logique métier pour modifier une sauce.
 exports.modifyOneSauce = (req, res, next) => {
@@ -41,6 +53,10 @@ exports.modifyOneSauce = (req, res, next) => {
     .then(() => res.status(200).json({ message: 'Sauce modifiée !' }))
     .catch(error => res.status(400).json({ message: error.message }));
 };
+
+
+
+// *****************  Logiques métier DELETE ***************** DELETE (D)
 
 //Logique métier pour supprimer une sauce.
 exports.deleteOneSauce = (req, res, next) => {
@@ -55,6 +71,9 @@ exports.deleteOneSauce = (req, res, next) => {
     })
     .catch(error => res.status(500).json({ message: error.message }));
 };
+
+
+
 
 //Logique métier pour like or dislike.
 exports.sauceLike = (req, res, next) => {

@@ -18,6 +18,9 @@ schemaPassword
 .is().not().oneOf(['Passw0rd', 'Password123']); // Interdiction d'écrire ces deux mots de passe
 
 
+
+// *****************  Logiques métier POST ***************** CREATE (C)
+
 //Début des logiques métiers ou fonctionnalités
 //On export la fonction signup (inscription) pour l'utiliser après.
 exports.signup = (req, res, next) => {
