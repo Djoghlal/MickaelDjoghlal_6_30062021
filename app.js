@@ -1,5 +1,6 @@
 //On importe les modules supplémentaires
 const express = require('express');
+const helmet = require('helmet');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const path = require('path');
@@ -21,6 +22,9 @@ mongoose.connect(process.env.MONGO_LINK,
 
   .then(() => console.log('Connexion à MongoDB réussie !'))
   .catch(() => console.log('Connexion à MongoDB échouée !'));
+
+//App use du Helmet
+app.use(helmet());
 
 //Mise en place des headers
 app.use((req, res, next) => {
