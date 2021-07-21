@@ -14,6 +14,7 @@ Pour faire fonctionner le projet, vous devez installer :
 
 ## Configuration du .env
 
+- Créer un fichier .env
 - y mettre la ligne de connexion à mongoDB.
 
 
